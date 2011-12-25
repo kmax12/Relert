@@ -13,7 +13,7 @@ if (process.env.REDISTOGO_URL) {
 	redis.auth(rtg.auth.split(":")[1]);
 	redis.get('count', function(err, res){
 		console.log(res)
-	};
+	});
 } else {
 	//var redis = redislib.createClient();
 }
