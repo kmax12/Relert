@@ -24,6 +24,7 @@ app.get('/', function (req, response) {
 app.get('/add/:url', function (req, response) {
    //var num = get next number,
    //base64 = decToBase64(num);
+   redis.set('foo', 'bar');
    //add base64 as key to db, url is value
    //response.write(newurl);
    //response.end();
