@@ -44,17 +44,19 @@ app.get('/add', function (req, response) {
 				email: req.query['email']
 			},
 			function(){
-				response.write('{url: http://relert.herokuapp.com/'+base64+'}');
+				response.write('{url: http://relert.herokuapp.com/go/'+base64+'}');
 				response.end();
 		});
     });
 });
 
-app.get('/:hex', function (req, response) {
+app.get('/go/:hex', function (req, response) {
    if (req.params.hex){
 	   redis.get(req.params.hex, function(err, res){
-				console.log(res.url);
-				response.redirect(res.url)
+				if (res) {
+					console.log(res.url);
+					response.redirect(res.url)
+				}
 		})
 	}
 });
