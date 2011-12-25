@@ -40,12 +40,12 @@ app.get('/add', function (req, response) {
 		redis.SET(
 			base64,
 			{
-				url:req.query['url'],
-				email: req.query['email']
+				"url":req.query['url'],
+				"email": req.query['email']
 			},
 			function(){
 				response.contentType('application/json')
-				response.write('{"url": http://relert.herokuapp.com/go/'+base64+'}');
+				response.write('{"url": "http://relert.herokuapp.com/go/'+base64+'"}');
 				response.end();
 		});
     });
@@ -75,9 +75,9 @@ function decToBase64 (num){
 	power = 0;
 	//console.log(start)
 	while (start+1){
-		power = Math.pow(64,start);
-		console.log(power);
-		console.log(num/power)		
+		power = Math.pow(62,start);
+		//console.log(power);
+		//console.log(num/power)		
 		add = Math.floor(num/power);
 		
 		if (add>=1){
