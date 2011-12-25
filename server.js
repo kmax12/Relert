@@ -18,7 +18,7 @@ nodemailer.SES = {
 nodemailer.send_mail(
     // e-mail options
     {
-        sender: 'me@example.com',
+        sender: 'kmax12@gmail.com',
         to:'kmax12@gmail.com',
         subject:'Hello!',
         html: '<p><b>Hi,</b> how are you doing?</p>',
