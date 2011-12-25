@@ -12,7 +12,7 @@ if (process.env.REDISTOGO_URL) {
 	var redis = redislib.createClient(rtg.port, rtg.hostname);
 	redis.auth(rtg.auth.split(":")[1]);
 	redis.get('count', function(err, res){
-		console.log(res)
+		//console.log(res)
 	});
 } else {
 	//var redis = redislib.createClient();
@@ -42,9 +42,10 @@ app.get('/add/:url', function (req, response) {
 		redis.INCR('count', function(){
 			redis.SET(base64, req.params.url);
 			response.write('{url:'+base64+'}');
-			response.end();
+			//response.end();
 		});		
     });
+    response.end();
 });
 
 app.get('/:hex', function (req, response) {
