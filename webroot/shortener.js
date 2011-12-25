@@ -4,8 +4,9 @@ $(window).ready(function(){
 		
 		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#rmail').val(),function(data) {
 			var data = $.parseJSON(data)
+			console.l
 			if (!data.error){
-				$('#container').html('<a href="'+data+'">'+data.url+'</a')
+				$('#container').html('<a href="'+data.url+'">'+data.url+'</a')
 			} else {
 				alert(data.error)
 			}

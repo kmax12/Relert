@@ -54,8 +54,9 @@ app.get('/go/:hex', function (req, response) {
    if (req.params.hex){
 	   redis.get(req.params.hex, function(err, res){
 				if (res) {
+					
 					//response.redirect(res.url)
-					//response.write(res.url.toString());
+					response.write(res.url);
 					response.end();
 				}
 		})
