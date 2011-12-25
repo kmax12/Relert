@@ -11,9 +11,9 @@ if (process.env.REDISTOGO_URL) {
 	var rtg   = url.parse(process.env.REDISTOGO_URL);
 	var redis = redislib.createClient(rtg.port, rtg.hostname);
 	redis.auth(rtg.auth.split(":")[1]);
-	redis.GET('count', function(err, res){
+	/*redis.GET('count', function(err, res){
         console.log(res);
-    });
+    });*/
 } else {
 	//var redis = redislib.createClient();
 }
