@@ -11,6 +11,7 @@ if (process.env.REDISTOGO_URL) {
 	var rtg   = url.parse(process.env.REDISTOGO_URL);
 	var redis = redislib.createClient(rtg.port, rtg.hostname);
 	redis.auth(rtg.auth.split(":")[1]);
+	redis.set('count', 0);
 } else {
 	//var redis = redislib.createClient();
 }
@@ -33,7 +34,7 @@ app.get('/', function (req, response) {
 app.get('/add/:url', function (req, response) {
    //var num = get next number,
    //base64 = decToBase64(num);
-   redis.set('foo', 'bar');
+   //
    //add base64 as key to db, url is value
    //response.write(newurl);
    //response.end();
