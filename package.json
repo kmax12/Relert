@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "2.2.0",
-    "redis-url": "0.0.1"
+    "redis-url": "0.0.1",
+    "nodemailer": "0.1.5"
   }
 }
