@@ -57,7 +57,7 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-function decToBase64 (num){
+function decToBase64 (input){
 	var b64array = "ABCDEFGHIJKLMNOP" +
            "QRSTUVWXYZabcdef" +
            "ghijklmnopqrstuv" +
