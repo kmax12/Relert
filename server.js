@@ -37,15 +37,14 @@ app.get('/add/:url', function (req, response) {
 	redis.GET('count', function(err, res){
         var num = res,
 		base64 = decToBase64(num);
-		console.log('num: ' + num)
-		console.log('base: ' + base64)
+		//console.log('num: ' + num);
+		//console.log('base: ' + base64);
 		redis.INCR('count', function(){
 			redis.SET(base64, req.params.url);
 			response.write('{url:'+base64+'}');
-			//response.end();
+			response.end();
 		});		
     });
-    response.end();
 });
 
 app.get('/:hex', function (req, response) {
