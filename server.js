@@ -58,23 +58,41 @@ app.listen(port, function() {
 });
 
 function decToBase64 (num){
-	var start = Math.ceil(Math.log(num)/Math.log(64)) +1,
-	base64Str = "abcdefghijklmnopqrstuvwyxABCDEFGHIJKLMNOPQRSTUVWYX0123456789",
-	base64 = "",
-	power = 0;
-	//console.log(start)
-	while (start+1){
-		power = Math.pow(64,start);
-		console.log(power);
-		console.log(num/power)		
-		add = Math.floor(num/power);
-		
-		if (add>=1){
-			base64 += base64Str.charAt(add);
-			num -= add*power;
-		}
-	
-		start -= 1;
-	}
-	return base64;
+	var b64array = "ABCDEFGHIJKLMNOP" +
+           "QRSTUVWXYZabcdef" +
+           "ghijklmnopqrstuv" +
+           "wxyz0123456789+/" +
+           "=",
+    base64 = "",
+    hex = "",
+    chr1, chr2, chr3 = "",
+    enc1, enc2, enc3, enc4 = "",
+    i = 0;
+
+    do {
+        chr1 = input.charCodeAt(i++);
+        chr2 = input.charCodeAt(i++);
+        chr3 = input.charCodeAt(i++);
+    
+        enc1 = chr1 >> 2;
+        enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+        enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+        enc4 = chr3 & 63;
+    
+        if (isNaN(chr2)) {
+            enc3 = enc4 = 64;
+        } else if (isNaN(chr3)) {
+            enc4 = 64;
+        }
+
+        base64  = base64  +
+            b64array.charAt(enc1) +
+            b64array.charAt(enc2) +
+            b64array.charAt(enc3) +
+            b64array.charAt(enc4);
+        chr1 = chr2 = chr3 = "";
+        enc1 = enc2 = enc3 = enc4 = "";
+    } while (i < input.length);
+    
+    return base64;
 }
