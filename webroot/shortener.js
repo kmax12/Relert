@@ -3,7 +3,12 @@ $(window).ready(function(){
 		e.preventDefault();
 		
 		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#rmail').val(),function(data) {
-		  $('#container').html('<a href="'+data+'">'+data+'</a')
+			var data = $.parseJSON(data)
+			if (!data.error){
+				$('#container').html('<a href="'+data+'">'+data.url+'</a')
+			} else {
+				alert(data.error)
+			}
 		});
 	});
 });
