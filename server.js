@@ -33,13 +33,15 @@ app.get('/', function (req, response) {
 
 app.get('/add', function (req, response) {
 	redis.INCR('count', function(err, res){
-        var num = res,
-		base64 = decToBase64(num);
-		console.log('num: ' + num);
-		console.log('base: ' + base64);
+        var base64 = decToBase64(res),
+        data = {
+				"url":req.query['url'],
+				"email": req.query['email']
+			};
+		
 		redis.SET(
 			base64,
-			req.query['url'],
+			JSON.stringify(data),
 			function(){
 				response.write('{"url": "http://relert.herokuapp.com/go/'+base64+'"}');
 				response.end();
@@ -51,9 +53,9 @@ app.get('/go/:hex', function (req, response) {
    if (req.params.hex){
 	   redis.get(req.params.hex, function(err, res){
 				if (res) {
-					
-					response.redirect(res)
-					//response.write(res.url);
+					data = JSON.parse(res);
+					//response.redirect(res.url)
+					response.write(res.url);
 					response.end();
 				}
 		})
