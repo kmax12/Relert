@@ -58,7 +58,7 @@ app.listen(port, function() {
 });
 
 function decToBase64 (num){
-	var start = Math.ceil(Math.log(num)/Math.log(64))
+	var start = Math.ceil(Math.log(num)/Math.log(64)) +1,
 	base64Str = "abcdefghijklmnopqrstuvwyxABCDEFGHIJKLMNOPQRSTUVWYX0123456789",
 	base64 = "",
 	power = 0;
