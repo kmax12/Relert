@@ -52,7 +52,7 @@ app.get('/add', function (req, response) {
     });
 });
 
-app.get('', function (req, response) {
+app.get('/asd', function (req, response) {
    //redis.get('
    //var redirect = look up hex;
    //redirect user
