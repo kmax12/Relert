@@ -39,9 +39,9 @@ app.get('/add/:url', function (req, response) {
 		//base64 = decToBase64(num);
 		//console.log('num: ' + num);
 		//console.log('base: ' + base64);
-		redis.INCR('count', function(){
+		redis.INCR('count', function(err, res){
 			//redis.SET(base64, req.params.url);
-			response.write('{url:'+req.params.url+'}');
+			response.write('{url:'+res+'}');
 			response.end();
 		});		
     //});
