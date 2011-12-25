@@ -51,9 +51,10 @@ app.get('/add', function (req, response) {
 
 app.get('/go/:hex', function (req, response) {
    if (req.params.hex){
-	   redis.get(req.params.hex, function(err, res){
+	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
 					//data = JSON.parse(res);
+					console.log(res);
 					response.redirect('http://aol.com')
 					//response.write(res.url);
 					//response.end();
