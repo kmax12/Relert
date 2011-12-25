@@ -53,12 +53,12 @@ app.get('/add', function (req, response) {
 });
 
 app.get('/:hex', function (req, response) {
-   redis.get(req.params.hex, function(err, res){
-		console.log(res);
-		if (res){
-			response.redirect('google.com')
-		}
-	})
+   if (req.params.hex){
+	   redis.get(req.params.hex, function(err, res){
+				console.log(res);
+				response.redirect('http://google.com')
+		})
+	}
 });
 
 var port = process.env.PORT || 3000;
