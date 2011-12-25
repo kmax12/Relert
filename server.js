@@ -64,7 +64,7 @@ function decToBase64 (num){
 	base64Str = "abcdefghijklmnopqrstuvwyxABCDEFGHIJKLMNOPQRSTUVWYX0123456789",
 	base64 = "",
 	power = 0;
-	console.log(start)
+	//console.log(start)
 	while (start+1){
 		power = Math.pow(64,start);
 		console.log(power);
