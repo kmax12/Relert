@@ -44,7 +44,7 @@ app.get('/add/:url', function (req, response) {
 			response.write('{url:'+req.params.url+'}');
 			response.end();
 		//});		
-    });
+    //});
 });
 
 app.get('/:hex', function (req, response) {
