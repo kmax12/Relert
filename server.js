@@ -39,9 +39,10 @@ app.get('/add/:url', function (req, response) {
 		base64 = decToBase64(num);
 		console.log('num: ' + num);
 		console.log('base: ' + base64);
-		//redis.SET(base64, req.params.url);
-		response.write('{url:'+base64+'}');
-		response.end();
+		redis.SET(base64, req.params.url, function(){
+			response.write('{url:'+base64+'}');
+			response.end();
+		});
     });
 });
 
