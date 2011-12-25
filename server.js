@@ -54,9 +54,9 @@ app.get('/add', function (req, response) {
 
 app.get('/:hex', function (req, response) {
    redis.get(req.params.hex, function(err, res){
-		console.log('hex');
+		console.log(res);
 		if (res){
-			response.redirect(res.url)
+			response.redirect('google.com')
 		}
 	})
 });
