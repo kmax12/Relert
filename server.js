@@ -4,14 +4,14 @@ fs = require('fs'),
 util = require('util'),
 path = require('path'),
 WEBROOT = path.join(path.dirname(__filename), '/webroot'),
-redis = require("redis");
+redis = require('redis-url').connect(process.env.REDISTOGO_URL);
 
 //Create express server
-var server = express.createServer();
-server.use('/static',express.static(WEBROOT));
+var app = express.createServer(express.logger());
+app.use('/static',express.static(WEBROOT));
 
 //Define route for the homepage
-server.get('/', function (req, response) {
+app.get('/', function (req, response) {
    fs.readFile(WEBROOT+'/index.html', function (err, data) {
         response.writeHead(200, {
             'Content-Type': 'text/html'
@@ -21,7 +21,7 @@ server.get('/', function (req, response) {
     });
 });
 
-server.get('/add/:url', function (req, response) {
+app.get('/add/:url', function (req, response) {
    //var num = get next number,
    //base64 = decToBase64(num);
    //add base64 as key to db, url is value
@@ -29,14 +29,16 @@ server.get('/add/:url', function (req, response) {
    //response.end();
 });
 
-server.get('/:hex', function (req, response) {
+app.get('/:hex', function (req, response) {
    //var redirect = look up hex;
    //redirect user
    //ssendEmail
 });
 
-server.listen(8080);
-util.log('Express server started on port ' + server.address().port);
+var port = process.env.PORT || 3000;
+app.listen(port, function() {
+  console.log("Listening on " + port);
+});
 
 function decToBase64 (num){
 	var start = Math.ceil(Math.log(num)/Math.log(64))
@@ -54,7 +56,7 @@ function decToBase64 (num){
 			base64 += base64Str.charAt(add);
 			num -= add*power;
 		}
-		
+	
 		start -= 1;
 	}
 	return base64;
