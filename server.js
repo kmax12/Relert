@@ -23,7 +23,7 @@ var app = express.createServer(express.logger());
 app.use('/static',express.static(WEBROOT));
 
 //Define route for the homepage
-app.get('/:hex', function (req, response) {
+app.get('/', function (req, response) {
    fs.readFile(WEBROOT+'/index.html', function (err, data) {
         response.writeHead(200, {
             'Content-Type': 'text/html'
@@ -52,11 +52,10 @@ app.get('/add', function (req, response) {
     });
 });
 
-app.get('/asd', function (req, response) {
-   //redis.get('
-   //var redirect = look up hex;
-   //redirect user
-   //ssendEmail
+app.get('/:hex', function (req, response) {
+   redis.get(req.params.hex, function(err, res){
+	   response.redirect(res.url)
+	})
 });
 
 var port = process.env.PORT || 3000;
