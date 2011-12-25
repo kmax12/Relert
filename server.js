@@ -11,9 +11,7 @@ if (process.env.REDISTOGO_URL) {
 	var rtg   = url.parse(process.env.REDISTOGO_URL);
 	var redis = redislib.createClient(rtg.port, rtg.hostname);
 	redis.auth(rtg.auth.split(":")[1]);
-	redis.get('count', function(err, res){
-		//console.log(res)
-	});
+	redis.set('count', '10000000');
 } else {
 	//var redis = redislib.createClient();
 }
@@ -46,7 +44,7 @@ app.get('/add', function (req, response) {
 				email: req.query['email']
 			},
 			function(){
-				response.write('{url:'+base64+'}');
+				response.write('{url: http://relert.herokuapp.com/'+base64+'}');
 				response.end();
 		});
     });
@@ -55,8 +53,8 @@ app.get('/add', function (req, response) {
 app.get('/:hex', function (req, response) {
    if (req.params.hex){
 	   redis.get(req.params.hex, function(err, res){
-				console.log(res);
-				response.redirect('http://google.com')
+				console.log(res.url);
+				response.redirect(res.url)
 		})
 	}
 });
