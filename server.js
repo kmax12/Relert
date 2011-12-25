@@ -35,14 +35,14 @@ app.get('/', function (req, response) {
 
 app.get('/add/:url', function (req, response) {
 	redis.INCR('count', function(err, res){
-        var num = res,
-		base64 = decToBase64(num);
-		console.log('num: ' + num);
-		console.log('base: ' + base64);
-		redis.SET(base64, req.params.url, function(){
-			response.write('{url:'+base64+'}');
+        //var num = res,
+		//base64 = decToBase64(num);
+		//console.log('num: ' + num);
+		//console.log('base: ' + base64);
+		//redis.SET(base64, req.params.url, function(){
+			response.write(req.query['email']);
 			response.end();
-		});
+		//});
     });
 });
 
