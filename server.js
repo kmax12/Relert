@@ -44,7 +44,6 @@ app.get('/add', function (req, response) {
 				"email": req.query['email']
 			},
 			function(){
-				response.contentType('application/json')
 				response.write('{"url": "http://relert.herokuapp.com/go/'+base64+'"}');
 				response.end();
 		});
