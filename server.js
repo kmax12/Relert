@@ -1,12 +1,13 @@
 var http = require('http'),
 express = require("express"),
 fs = require('fs'),
+util = require('util'),
 path = require('path'),
 WEBROOT = path.join(path.dirname(__filename), '/webroot'),
 redis = require("redis");
 
 //Create express server
-var server = express.createServer(),
+var server = express.createServer();
 server.use('/static',express.static(WEBROOT));
 
 //Define route for the homepage
@@ -33,6 +34,9 @@ server.get('/:hex', function (req, response) {
    //redirect user
    //ssendEmail
 });
+
+server.listen(8080);
+util.log('Express server started on port ' + server.address().port);
 
 function decToBase64 (num){
 	var start = Math.ceil(Math.log(num)/Math.log(64))

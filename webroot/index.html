@@ -1,0 +1,45 @@
+<html>
+<head>
+<style>
+	body{
+		font-family: sans-serif;
+	}
+	#container{
+		width:400px;
+		height:300px;
+		margin: 10% auto;
+		padding: 20px;
+		background-color: red;
+		border-radius: 5px; 
+	}
+	
+	input{
+		height:30px;
+		font-size: 20px;
+		margin: 10px 0px;
+		display: block;
+	}
+	
+	div {
+		font-size: 30px;
+		color: white;
+	}
+
+</style>
+
+
+</head>
+<body>
+	<div id ="container">
+		<form>
+			<div>Enter your url</div>
+			<input id="url" type="text" placeholder="url"/>
+			<div>Where should we alert you?</div>
+			<input id="email" type="text" placeholder="blah@blahzoo.com"/>
+			<button id="submit" type="submit">Submit</button>
+		</form>
+	</div>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+<script src="shortener.js"></script>
+</body>
+</html>
