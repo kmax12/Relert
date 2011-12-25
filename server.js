@@ -39,10 +39,7 @@ app.get('/add', function (req, response) {
 		console.log('base: ' + base64);
 		redis.SET(
 			base64,
-			{
-				"url":req.query['url'],
-				"email": req.query['email']
-			},
+			req.query['url'],
 			function(){
 				response.write('{"url": "http://relert.herokuapp.com/go/'+base64+'"}');
 				response.end();
@@ -55,8 +52,8 @@ app.get('/go/:hex', function (req, response) {
 	   redis.get(req.params.hex, function(err, res){
 				if (res) {
 					
-					//response.redirect(res.url)
-					response.write(res.url);
+					response.redirect(res)
+					//response.write(res.url);
 					response.end();
 				}
 		})
