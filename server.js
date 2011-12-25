@@ -4,7 +4,15 @@ fs = require('fs'),
 util = require('util'),
 path = require('path'),
 WEBROOT = path.join(path.dirname(__filename), '/webroot'),
-redis = require('redis-url').connect(process.env.REDISTOGO_URL);
+redislib = require('redis');
+
+if (process.env.REDISTOGO_URL) {
+	var rtg   = url.parse(process.env.REDISTOGO_URL);
+	var redis = redislib.createClient(rtg.port, rtg.hostname);
+	redis.auth(rtg.auth.split(":")[1]);
+} else {
+	//var redis = redislib.createClient();
+}
 
 //Create express server
 var app = express.createServer(express.logger());
