@@ -73,6 +73,9 @@
 		background-color:#334433;
 	}
 </style>
+<script type="text/javascript">
+	window.relertId = {{hex}}
+</script>
 </head>
 <body>
 <div id="bar">

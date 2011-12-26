@@ -1,6 +1,10 @@
 $(window).ready(function(){
 	resize();
 	$(window).resize(resize);
+	
+	$('#close').click(function(){
+		$.post("http://relert.herokuapp.com/send/"+window.hex, {message: false} );	
+	});
 });
 
 function resize(){
