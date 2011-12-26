@@ -87,7 +87,15 @@ app.post('/done/:hex', function (req, response) {
 		console.log(req.body);
 		var data  = req.body;
 		if (data.message=="true"){
-			sendEmail(req.params.hex, data.messageBody);
+			sendEmail(req.params.hex, data.messageBody, function(err){
+					if (err){
+							response.write('{"success": "false"}');
+					} else {
+						response.write('{"success": "true"}');
+					}
+					
+					response.end();
+			});
 		}
 	}
 });
@@ -97,7 +105,7 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-var sendEmail= function (hex, messageBody){
+var sendEmail= function (hex, messageBody, callback){
 	redis.GET(hex, function(err, res){
 			if (res) {
 				data = JSON.parse(res);
@@ -116,6 +124,8 @@ var sendEmail= function (hex, messageBody){
 							  html: res
 						  }
 						});
+						
+						callback(false);
 					})
 				}
 				

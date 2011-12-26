@@ -7,11 +7,21 @@ $(window).ready(function(){
 	});
 	
 	$('#send').click(function(){
-		var val = $('#message').val();
+		var $message = $('#message'),
+		val = $message.val();
 		if (val === ""){
 				alert('Please enter message');
+				$message.focus();
 		} else {
-			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: true, messageBody: val});	
+			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: true, messageBody: val}, function(res){
+				res = JSON.parse(res);
+				if (res.success){
+						$('change').html('Message sent!');
+				} else {
+					$('change').html('Message not sent :(');
+				}
+					
+			});	
 		}
 	});
 });
