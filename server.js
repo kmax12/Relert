@@ -29,6 +29,7 @@ if (process.env.REDISTOGO_URL) {
 //Create express server
 var app = express.createServer(express.logger());
 app.use('/static',express.static(WEBROOT));
+app.use(express.bodyParser());
 
 //Define route for the homepage
 app.get('/', function (req, response) {
@@ -47,7 +48,10 @@ app.get('/add', function (req, response) {
         data = {
 				"url":req.query['url'],
 				"email": req.query['email'],
-				"name": req.query['name']
+				"name": req.query['name'],
+				"clicked": false,
+				"wantsM": req.query['wants'],
+				"m":""
 			};
 		
 		redis.SET(

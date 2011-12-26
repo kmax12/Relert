@@ -26,7 +26,7 @@
 	}
 	
 	.red {
-		color: #532;
+		color: #832;
 	}
 	
 	.blue {
@@ -58,7 +58,18 @@
 		box-shadow: 0px 1px 30px #333,
 					0px 0px 4px #9aa inset;
 	}
-	.label{
+	
+	#box{
+		position:relative;
+	}
+	
+	label{
+				text-shadow: 0 0px 0px #222;
+	}
+	
+	#url-label{
+			position:absolute;
+			left:100px;
 	}
 	input[type=text]{
 		margin: .2em 0 1em 0;
@@ -67,6 +78,10 @@
 		width:100%;	
 		border-radius: 4px;
 		font-size: 20px;
+	}
+	
+	input[type=text].error{
+			background-color:ecc;
 	}
 	
 	#message{
@@ -84,7 +99,7 @@
 		padding: .2em;
 		text-align: center;
 		font-weight: bold;
-		background-color: #532;
+		background-color: #832;
 		border-radius: 3px;
 		cursor: pointer;
 		box-shadow: 0px 0px 2px #abb inset;
@@ -149,18 +164,19 @@
 	<div id="logo"><span class="red">Re</span><span class="white">lert</span></div>
 	<div id="sub">Get <span class="green">read alerts</span> when your friend clicks your link</div>
 	<div id ="container">
-		<div class="box">
+		<form id="box">
 			<div class="label">The link</div>
-			<input id="url" type="text" placeholder="http://google.com/"/>
+			<input id="url" name="url" type="text" placeholder="http://google.com/"/>
 			<div class="label">Name</div>
-			<input id="name" type="text" placeholder="Funny cat video for Dad"/>
+			<input id="name"  name='name' type="text" placeholder="Funny cat video for Dad"/>
 			<div class="label">Email to receive relert</div>
-			<input id="email" type="text" placeholder="beboop@wezoodle.com"/>
+			<input id="email" name="email" type="text" placeholder="beboop@wezoodle.com"/>
 			<div class="label">Allow email replies? <input id="message" type="checkbox"/></div> 
 			<div id="submit" class="button" type="submit">Submit</div>
-		</div>
+		</form>
 	</div>
 <script src="static/jquery.min.js"></script>
+<script src="static/jquery.validate.min.js"></script>
 <script src="static/jquery.qtip.js"></script>
 <script src="static/shortener.js"></script>
 </body>

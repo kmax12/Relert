@@ -4,5 +4,7 @@ $(window).ready(function(){
 });
 
 function resize(){
-	$('#iframe').height($(window).height()-100);
+	var barHeight= $('#bar').height();
+	$('#iframe').height($(window).height()-barHeight);
+	$('#iframe').css('top',barHeight);
 }
