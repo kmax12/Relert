@@ -7,6 +7,24 @@ path = require('path'),
 WEBROOT = path.join(path.dirname(__filename), '/webroot'),
 redislib = require('redis'),
 nodemailer = require('nodemailer');
+var Mu = require('mustache');
+
+Mu.templateRoot = './static';
+
+var ctx = {
+  title:"http://aol.com"
+};
+
+Mu.render('frame.html', ctx, {}, function (err, output) {
+  if (err) {
+    throw err;
+  }
+
+  var buffer = '';
+
+  output.addListener('data', function (c) {buffer += c; })
+        .addListener('end', function () { console.log(buffer); });
+});
 
 nodemailer.SES = {
     AWSAccessKeyID: '', // required
@@ -69,9 +87,10 @@ app.get('/:hex', function (req, response) {
 	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
 					data = JSON.parse(res);
+					
 					console.log(data.url);
 					response.redirect(data.url);
-					sendEmail(req.params.hex);
+					setTimeout(1000*60*10, function(){sendEmail(req.params.hex)}); //try to send email in 10 minutes
 				}
 		})
 	}

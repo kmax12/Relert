@@ -4,6 +4,7 @@
   "dependencies": {
     "express": "2.2.0",
     "redis-url": "0.0.1",
-    "amazon-ses": "0.0.3"
+    "amazon-ses": "0.0.3",
+    "mustache": "0.3.1"
   }
 }
