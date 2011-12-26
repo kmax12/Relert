@@ -82,7 +82,7 @@ app.get('/:hex', function (req, response) {
 });
 
 app.post('/done/:hex', function (req, response) {
-   console.log(req.params.hex);
+   console.log(req.body);
    if (req.params.hex){
 	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
