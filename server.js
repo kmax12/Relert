@@ -54,7 +54,7 @@ app.get('/add', function (req, response) {
 			base64,
 			JSON.stringify(data),
 			function(){
-				response.write('{"url": "http://relert.herokuapp.com/go/'+base64+'"}');
+				response.write('{"url": "http://relert.herokuapp.com/'+base64+'"}');
 				response.end();
 		});
     });
@@ -70,10 +70,10 @@ app.get('/:hex', function (req, response) {
 					ses.send({
 						  from: 'kanter@mit.edu',
 						  to: [data.email],
-						  subject: "Relert for: " + data.name + " was looked at",
+						  subject: "Relert for: " + data.name,
 						  body: {
 							  text: 'This is a relert for' + data.name,
-							  html: 'This is a relert for' + data.name +". It was looked at at" + (new Date()).getTime()
+							  html: 'This is a relert for' + data.name
 						  }
 					  });
 				}
