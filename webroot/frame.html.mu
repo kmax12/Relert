@@ -87,8 +87,8 @@
 	<a id="close" class="button" href="{{url}}">x</a>
 </div>
 <iframe src="{{url}}" width="100%" noresize="noresize" frameborder="0" id="iframe" style="height: 100%; "></iframe>
-<script src="jquery.min.js"></script>
-<script src="frame.js"></script>
+<script src="static/jquery.min.js"></script>
+<script src="static/frame.js"></script>
 </body>
 </html>
 
