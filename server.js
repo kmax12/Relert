@@ -9,26 +9,24 @@ redislib = require('redis'),
 nodemailer = require('nodemailer');
 
 nodemailer.SES = {
-    AWSAccessKeyID: 'AKIAJ6PO3P4KGEAOX3IA', // required
-    AWSSecretKey: 'AvOo1V7xZzHkT5KAyqf7H0Te9HKEqmTcf8fbmp1iHXeW', // required
+    AWSAccessKeyID: '', // required
+    AWSSecretKey: '', // required
     ServiceUrl: 'email-smtp.us-east-1.amazonaws.com', // optional
 }
 
+var AmazonSES = require('amazon-ses');
+var ses = new AmazonSES('AKIAJ6PO3P4KGEAOX3IA', 'AvOo1V7xZzHkT5KAyqf7H0Te9HKEqmTcf8fbmp1iHXeW');
 
-nodemailer.send_mail(
-    // e-mail options
-    {
-        sender: 'kanter@mit.edu',
-        to:'kanter@mit.edu',
-        subject:'Hello!',
-        html: '<p><b>Hi,</b> how are you doing?</p>',
-        body:'Hi, how are you doing?'
-    },
-    // callback function
-    function(error, success){
-        console.log('Message ' + success ? 'sent' : 'failed');
-    }
-);
+
+ses.send({
+      from: 'kanter@mit.edu',
+      to: ['kanter@mit.edu', 'kanter@mit.edu'],
+      subject: 'Test subject',
+      body: {
+          text: 'This is the text of the message.',
+          html: 'This is the html body of the message.'
+      }
+  });
 
 if (process.env.REDISTOGO_URL) {
 	var rtg   = url.parse(process.env.REDISTOGO_URL);
