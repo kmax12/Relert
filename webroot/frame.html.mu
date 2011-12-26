@@ -7,7 +7,7 @@
 	body{
 		min-height: 100%;
 		margin:0px;
-		font-size: 30px;
+		font-size: 20px;
 		color:white;
 		font-family: sans-serif;
 		font-weight:bold;
@@ -27,8 +27,14 @@
 		z-index:9999;
 		display: block;
 	}
+	
+	#change{
+		display:inline;
+	}
+	
 	#close{
-		right:20px;
+		position:absolute;
+		right:8%;
 		font-size:20px;
 		height: 80%;
 		width:5%;
@@ -51,7 +57,7 @@
 		display: inline;
 		border-radius: 4px;
 		font-size: 20px;
-		width:50%;
+		width:60%;
 	}
 	
 	.button{
