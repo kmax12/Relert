@@ -81,10 +81,9 @@
 	</div>
 	<input type="textarea" placeholder="This will be emailed to your friend"/>
 	<div id="send" class="button">send</div>
-	<a id="close" class="button" href="http://relert.herokuapp.com">x</a>
+	<a id="close" class="button" href="{{url}}">x</a>
 </div>
-{{title}}
-<iframe src="{{title}}" width="100%" noresize="noresize" frameborder="0" id="iframe" style="height: 100%; "></iframe>
+<iframe src="{{url}}" width="100%" noresize="noresize" frameborder="0" id="iframe" style="height: 100%; "></iframe>
 <script src="jquery.min.js"></script>
 <script src="frame.js"></script>
 </body>
