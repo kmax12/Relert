@@ -3,7 +3,7 @@ $(window).ready(function(){
 	$(window).resize(resize);
 	
 	$('#close').click(function(){
-		$.post("http://relert.herokuapp.com/done/"+window.hex, {message: false} );	
+		$.post("http://relert.herokuapp.com/done/"+window.hex, {"message": false} );	
 	});
 	
 	$('#send').click(function(){
@@ -11,7 +11,7 @@ $(window).ready(function(){
 		if (val === ""){
 				alert('Please enter message');
 		} else {
-			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: true, messageBody: val});	
+			$.post("http://relert.herokuapp.com/done/"+window.hex, {"message": true, "messageBody": val});	
 		}
 	});
 });
