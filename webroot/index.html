@@ -3,43 +3,164 @@
 <style>
 	body{
 		font-family: sans-serif;
-	}
-	#container{
-		width:400px;
-		height:300px;
-		margin: 10% auto;
-		padding: 20px;
-		background-color: red;
-		border-radius: 5px; 
-	}
-	
-	input{
-		height:30px;
-		font-size: 20px;
-		margin: 10px 0px;
-		display: block;
-	}
-	
-	div {
-		font-size: 30px;
+		background-color: #777;
 		color: white;
+		text-shadow: 0 2px 2px #222;
+		margin: 0px;
 	}
-
+	
+	#logo{
+		position:relative;
+		top:-5px;
+		width:3em;
+		margin: 0px auto 0 auto;
+		padding:.1em;
+		text-align:center;
+		color:#ffff;
+		background-color: #235;
+		border-radius: 0 0 8px 8px;
+		font: bold 6em/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+		box-shadow: 0px 1px 30px #333,
+					0px 0px 4px #9aa inset;
+		text-shadow: 0px 2px 2px #222	;
+	}
+	
+	.red {
+		color: #532;
+	}
+	
+	.blue {
+		color: #235;
+	}
+	
+	.green {
+		color:#454;
+	}
+	
+	#sub{
+		width:auto;
+		padding:.1em;
+		margin: .3em auto;
+		text-align:center;
+		color:#ffff;
+		border-radius: 5px;
+		font: bold 3.5em/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	
+	#container{
+		width:12em;
+		margin: 1em auto;
+		font-size: 1.7em;
+		font-weight: bold;
+		padding: .5em 1em;
+		background-color: #235;
+		border-radius: 5px; 
+		box-shadow: 0px 1px 30px #333,
+					0px 0px 4px #9aa inset;
+	}
+	.label{
+	}
+	input[type=text]{
+		margin: .2em 0 1em 0;
+		display: block;
+		height:35px;
+		width:100%;	
+		border-radius: 4px;
+		font-size: 20px;
+	}
+	
+	#message{
+		margin-left: 0px;
+	}
+	
+	#submit {
+		
+	}
+	
+	.button{
+		width:auto;
+		margin: .4em 0 0 0;
+		font-size: 1em;
+		padding: .2em;
+		text-align: center;
+		font-weight: bold;
+		background-color: #532;
+		border-radius: 3px;
+		cursor: pointer;
+		box-shadow: 0px 0px 2px #abb inset;
+	}
+	
+	.button:hover{
+		box-shadow: 0px 0px 5px #abb inset;
+	}
+	
+	.button:active{
+		background-color:#334433;
+	}
+	
+	.overlay{
+		background-color: #444;
+		opacity: .9;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+	}
+	
+	#modal{
+		position: absolute;
+		left:35%;
+		top:30%;
+		z-index:10000;
+		width:30%;
+		margin: 1em auto;
+		font-size: 1.7em;
+		font-weight: bold;
+		padding: .5em 1em;
+		background-color: #235;
+		border-radius: 5px; 
+		box-shadow: 0px 1px 30px #333,
+					0px 0px 4px #9aa inset;
+	}
+	
+	.relert-link{
+		background-color: #444;
+		color:white;
+		border-radius:10px;
+		margin: 10px 0;
+		box-shadow: 0px 1px 30px #333,
+					0px 0px 4px #9aa inset;
+	}
+	
+	.hidden {
+		visibility:none;
+		display: none;
+	}
 </style>
 
 
 </head>
 <body>
-	<div id ="container">
-		<form>
-			<div>Enter your url</div>
-			<input id="url" type="text" placeholder="url"/>
-			<div>Where should we alert you?</div>
-			<input id="email" type="text" placeholder="blah@blahzoo.com"/>
-			<button id="submit" type="submit">Submit</button>
-		</form>
+	<div id="modal" class="hidden popbox">
+		<div>We'll email you when your friend looks at this link.</div>
+		<input class="relert-link" onclick="this.focus()" type="text" value="http://relert.com/aFas2f"/>
+		<div id="new" class="button">New relert</div>
 	</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="static/shortener.js"></script>
+	<div id="overlay" class="overlay hidden popbox"></div>
+	<div id="logo"><span class="red">Re</span><span class="white">lert</span></div>
+	<div id="sub">Get <span class="green">read alerts</span> when your friend clicks your link</div>
+	<div id ="container">
+		<div class="box">
+			<div class="label">The link</div>
+			<input id="url" type="text" placeholder="http://google.com/"/>
+			<div class="label">Name</div>
+			<input id="name" type="text" placeholder="Funny cat video for Dad"/>
+			<div class="label">Email to receive relert</div>
+			<input id="email" type="text" placeholder="beboop@wezoodle.com"/>
+			<div class="label">Allow email replies? <input id="message" type="checkbox"/></div> 
+			<div id="submit" class="button" type="submit">Submit</div>
+		</div>
+	</div>
+<script src="jquery.min.js"></script>
+<script src="shortener.js"></script>
 </body>
 </html>

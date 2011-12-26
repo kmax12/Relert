@@ -4,12 +4,17 @@ $(window).ready(function(){
 		
 		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#rmail').val(),function(data) {
 			var data = $.parseJSON(data)
-			console.l
 			if (!data.error){
-				$('#container').html('<a href="'+data.url+'">'+data.url+'</a')
+				$('.popbox').removeClass('hidden');
+				
+				$('#relert-link').val('<a href="'+data.url+'">'+data.url+'</a')
 			} else {
 				alert(data.error)
 			}
 		});
+	});
+	
+	$('#new').click(function(){
+		$('.popbox').addClass('hidden');
 	});
 });
