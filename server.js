@@ -86,7 +86,7 @@ app.post('/done/:hex', function (req, response) {
    var data = JSON.parse(req.body);
    if (req.params.hex){
 		if (data.message!="false"){
-			sendEmail(req.params.hex, data.messageBody)
+			sendEmail(req.params.hex, data.messageBody);
 		}
 	}
 });
@@ -96,17 +96,17 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-var sendEmail= function (hex, message){
+var sendEmail= function (hex, messageBody){
 	redis.GET(hex, function(err, res){
 			if (res) {
 				data = JSON.parse(res);
 				
 				if (data.m == "notSent"){
 					data.m = "sent";
-					data.messageBody = message;
+					data.messageBody = messageBody;
 					redis.set(hex, JSON.stringify(data));
 					
-					template(WEBROOT+"/message.html.mu", {name: data.name, message: message}, function (res){					
+					template(WEBROOT+"/message.html.mu", {name: data.name, message: messageBody}, function (res){					
 						ses.send({
 						  from: 'kanter@mit.edu',
 						  to: [data.email],
