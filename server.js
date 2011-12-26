@@ -59,7 +59,8 @@ app.get('/add', function (req, response) {
         var base64 = decToBase64(res),
         data = {
 				"url":req.query['url'],
-				"email": req.query['email']
+				"email": req.query['email'],
+				"name": req.query['name']
 			};
 		
 		redis.SET(
