@@ -14,7 +14,7 @@
 		overflow:hidden;
 	}
 	
-	#message{
+	#title{
 		display:inline;
 		width:20%;
 	}
@@ -79,7 +79,7 @@
 </head>
 <body>
 <div id="bar">
-	<div id="message">
+	<div id="title">
 		Send a comment about the link:
 	</div>
 	<input id="message" type="textarea" placeholder="This will be emailed to your friend"/>
