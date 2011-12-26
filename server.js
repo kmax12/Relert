@@ -92,7 +92,7 @@ var sendEmail= function (relertId){
 					redis.set(relertId, JSON.stringify(res))
 					ses.send({
 					  from: 'kanter@mit.edu',
-					  to: [res.email],
+					  to: [data.email],
 					  subject: "Relert for: " + data.name,
 					  body: {
 						  text: 'This is a relert for' + data.name,
