@@ -76,7 +76,6 @@ app.get('/:hex', function (req, response) {
 						response.write(a);
 						response.end();
 					});
-					
 				}
 		})
 	}
