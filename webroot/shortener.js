@@ -1,4 +1,11 @@
 $(window).ready(function(){
+	$('#url').blur(function(){
+		var url = $(this).text();
+		if(!url.match(/(?i)\b((?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/){
+			alert('nope');
+		}
+	});
+	
 	$('#submit').click(function(e){
 		e.preventDefault();
 		
