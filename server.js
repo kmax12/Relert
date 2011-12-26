@@ -15,7 +15,7 @@ nodemailer.SES = {
 }
 
 var AmazonSES = require('amazon-ses');
-var ses = new AmazonSES('AKIAJ6PO3P4KGEAOX3IA', 'AvOo1V7xZzHkT5KAyqf7H0Te9HKEqmTcf8fbmp1iHXeW');
+var ses = new AmazonSES('AKIAJPF76NONAI4IV6FQ', 'AsiBdSbPh4/xFkYa394IyIsSja3ve3mu7/NZB5lQddo1');
  ses.listVerifiedEmailAddresses(function(result) {
     console.log(result);
   });
