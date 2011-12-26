@@ -51,7 +51,7 @@ app.get('/add', function (req, response) {
 				"name": req.query['name'],
 				"clicked": false,
 				"wantsM": req.query['wants'],
-				"m":""
+				"m": "notSent"
 			};
 		
 		redis.SET(
@@ -70,16 +70,8 @@ app.get('/:hex', function (req, response) {
 				if (res) {
 					data = JSON.parse(res);
 					console.log(data.url);
-					response.redirect(data.url)
-					ses.send({
-						  from: 'kanter@mit.edu',
-						  to: [data.email],
-						  subject: "Relert for: " + data.name,
-						  body: {
-							  text: 'This is a relert for' + data.name,
-							  html: 'This is a relert for' + data.name
-						  }
-					  });
+					response.redirect(data.url);
+					sendEmail(req.params.hex);
 				}
 		})
 	}
@@ -89,6 +81,30 @@ var port = process.env.PORT || 3000;
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
+
+var sendEmail= function (relertId){
+	redis.GET(relertId, function(err, res){
+			if (res) {
+				data = JSON.parse(res);
+				
+				if (res.m == "notSent"){
+					res.m = "sent";
+					redis.set(relertId, JSON.stringify(res))
+					ses.send({
+					  from: 'kanter@mit.edu',
+					  to: [to],
+					  subject: "Relert for: " + data.name,
+					  body: {
+						  text: 'This is a relert for' + data.name,
+						  html: 'This is a relert for' + data.name
+					  }
+					});
+				}
+				
+			}
+	})
+	
+}
 
 function decToBase64 (num){
 	var start = Math.ceil(Math.log(num)/Math.log(64)) +1,
@@ -111,3 +127,4 @@ function decToBase64 (num){
 	}
 	return base64;
 }
+	

@@ -28,27 +28,8 @@ $(window).ready(function(){
 		},
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
-			//var error = $(error).text();
-			console.log($(error).text());
+			var error = $(error).text();
 			
-			$(element).qtip({
-			content: error,
-			position: {
-				corner: {
-					target: 'leftMiddle',
-					tooltip: 'rightMiddle'
-				}
-			},
-			show: { ready: true },
-			style: {
-				tip: 'rightMiddle',
-				padding: '5px 15px', // Give it some extra padding
-				name: 'red' // And style it with the preset dark theme
-			}
-			});
-			if($(element).qtip("api")){
-				//$(element).qtip("api").qtip('destroy');
-			}
 		},
 		success: function(label) {
 			console.log(label);

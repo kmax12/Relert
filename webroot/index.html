@@ -48,6 +48,7 @@
 	}
 	
 	#container{
+		position: relative;
 		width:12em;
 		margin: 1em auto;
 		font-size: 1.7em;
@@ -69,7 +70,8 @@
 	
 	#url-label{
 			position:absolute;
-			left:100px;
+			top: 10em;
+			left:-5em;
 	}
 	input[type=text]{
 		margin: .2em 0 1em 0;
@@ -174,6 +176,7 @@
 			<div class="label">Allow email replies? <input id="message" type="checkbox"/></div> 
 			<div id="submit" class="button" type="submit">Submit</div>
 		</form>
+		
 	</div>
 <script src="static/jquery.min.js"></script>
 <script src="static/jquery.validate.min.js"></script>
