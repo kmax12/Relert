@@ -87,8 +87,8 @@ app.post('/done/:hex', function (req, response) {
    if (req.params.hex){
 	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
-					data = JSON.parse(res);
-					if (data.message!="false"){
+					res = JSON.parse(res);
+					if (res.message!="false"){
 						sendEmail(req.params.hex, data.messageBody)
 					}
 				}
