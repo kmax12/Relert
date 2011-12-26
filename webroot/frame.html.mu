@@ -74,7 +74,7 @@
 	}
 </style>
 <script type="text/javascript">
-	window.relertId = "{{hex}}";
+	window.hex = "{{hex}}";
 </script>
 </head>
 <body>
