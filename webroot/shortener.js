@@ -7,7 +7,7 @@ $(window).ready(function(){
 			if (!data.error){
 				$('.popbox').removeClass('hidden');
 				
-				$('#relert-link').val('<a href="'+data.url+'">'+data.url+'</a').focus(function(){this.select()});
+				$('#relert-link').val(data.url).focus(function(){this.select()});
 			} else {
 				alert(data.error)
 			}
