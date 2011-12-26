@@ -15,7 +15,7 @@ nodemailer.SES = {
 }
 
 var AmazonSES = require('amazon-ses');
-var ses = new AmazonSES('kanter@mit.edu', 'shelly12');
+var ses = new AmazonSES('AKIAJEV7F3VKBWCX7XGA', 'ANMZibtTjrbaTVvd/uflkdMOGCuwn1lRXOQ4xb80');
  ses.listVerifiedEmailAddresses(function(result) {
     console.log(result);
   });
