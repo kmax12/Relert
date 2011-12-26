@@ -34,14 +34,16 @@
 	
 	#close{
 		position:absolute;
-		right:8%;
+		top: 10%;
+		right:1%;
 		font-size:20px;
 		height: 80%;
-		width:5%;
+		width:2%;
 	}
 		
 	#send{
 		width:10%;
+		padding: .2%;
 	}
 	A:link {text-decoration: none; color: white}
 	A:visited {text-decoration: none; color: white}
