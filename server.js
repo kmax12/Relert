@@ -53,7 +53,8 @@ app.get('/add', function (req, response) {
 				"name": req.query['name'],
 				"clicked": false,
 				"wantsM": req.query['wants'],
-				"m": "notSent"
+				"m": "notSent",
+				"messageBody": ""
 			};
 		
 		redis.SET(
@@ -82,12 +83,14 @@ app.get('/:hex', function (req, response) {
 });
 
 app.post('/done/:hex', function (req, response) {
-   console.log(req.body);
+   var data = JSON.parse(req.body);
    if (req.params.hex){
 	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
 					data = JSON.parse(res);
-					sendEmail(req.params.hex)
+					if (data.message!="false"){
+						sendEmail(req.params.hex, data.messageBody)
+					}
 				}
 		})
 	}
@@ -98,24 +101,26 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-var sendEmail= function (relertId){
-	redis.GET(relertId, function(err, res){
+var sendEmail= function (hex, message){
+	redis.GET(hex, function(err, res){
 			if (res) {
 				data = JSON.parse(res);
 				
 				if (data.m == "notSent"){
 					data.m = "sent";
-					redis.set(relertId, JSON.stringify(data));
-					console.log(data.email);
-					ses.send({
-					  from: 'kanter@mit.edu',
-					  to: [data.email],
-					  subject: "Relert for: " + data.name,
-					  body: {
-						  text: 'This is a relert for' + data.name,
-						  html: 'This is a relert for' + data.name
-					  }
-					});
+					data.messageBody = message;
+					redis.set(hex, JSON.stringify(data));
+					
+					template(WEBROOT+"/message.html.mu", {name: data.name, message: message}, function (res){					
+						ses.send({
+						  from: 'kanter@mit.edu',
+						  to: [data.email],
+						  subject: "Relert for: " + data.name,
+						  body: {
+							  html: res
+						  }
+						});
+					})
 				}
 				
 			}

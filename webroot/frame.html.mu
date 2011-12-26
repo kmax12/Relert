@@ -82,7 +82,7 @@
 	<div id="message">
 		Send a comment about the link:
 	</div>
-	<input type="textarea" placeholder="This will be emailed to your friend"/>
+	<input id="message" type="textarea" placeholder="This will be emailed to your friend"/>
 	<div id="send" class="button">send</div>
 	<a id="close" class="button" href="{{url}}">x</a>
 </div>
