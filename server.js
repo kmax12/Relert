@@ -85,14 +85,9 @@ app.get('/:hex', function (req, response) {
 app.post('/done/:hex', function (req, response) {
    var data = JSON.parse(req.body);
    if (req.params.hex){
-	   redis.GET(req.params.hex, function(err, res){
-				if (res) {
-					res = JSON.parse(res);
-					if (res.message!="false"){
-						sendEmail(req.params.hex, data.messageBody)
-					}
-				}
-		})
+		if (data.message!="false"){
+			sendEmail(req.params.hex, data.messageBody)
+		}
 	}
 });
 
