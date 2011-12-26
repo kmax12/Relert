@@ -15,10 +15,11 @@ $(window).ready(function(){
 		} else {
 			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: true, messageBody: val}, function(res){
 				res = JSON.parse(res);
+				
 				if (res.success){
-						$('change').html('Message sent!');
+						$('#change').html('Message sent!');
 				} else {
-					$('change').html('Message not sent :(');
+					$('#change').html('Message not sent :(');
 				}
 					
 			});	

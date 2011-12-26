@@ -110,7 +110,7 @@ var sendEmail= function (hex, messageBody, callback){
 			if (res) {
 				data = JSON.parse(res);
 				
-				if (data.m == "notSent"){
+				if (data.m /*== "notSent"*/){
 					data.m = "sent";
 					data.messageBody = messageBody;
 					redis.set(hex, JSON.stringify(data));
