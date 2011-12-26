@@ -87,9 +87,10 @@ var sendEmail= function (relertId){
 			if (res) {
 				data = JSON.parse(res);
 				
-				if (res.m == "notSent"){
-					res.m = "sent";
-					redis.set(relertId, JSON.stringify(res))
+				if (data.m == "notSent"){
+					data.m = "sent";
+					redis.set(relertId, JSON.stringify(data));
+					console.log(data.email);
 					ses.send({
 					  from: 'kanter@mit.edu',
 					  to: [data.email],
