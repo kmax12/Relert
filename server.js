@@ -84,8 +84,8 @@ app.get('/:hex', function (req, response) {
 
 app.post('/done/:hex', function (req, response) {
    if (req.params.hex){
-		console.log(req.body.message);
-		//var data = JSON.parse(req.body);
+		console.log(req.body);
+		var data  = req.body;
 		if (data.message=="true"){
 			sendEmail(req.params.hex, data.messageBody);
 		}
