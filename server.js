@@ -17,16 +17,6 @@ nodemailer.SES = {
 var AmazonSES = require('amazon-ses');
 var ses = new AmazonSES('AKIAJEV7F3VKBWCX7XGA', 'ANMZibtTjrbaTVvd/uflkdMOGCuwn1lRXOQ4xb80');
 
-ses.send({
-      from: 'kasnter@mit.edu',
-      to: ['kanter@mit.edu', 'kanter@mit.edu'],
-      subject: 'Test subject',
-      body: {
-          text: 'This is the text of the message.',
-          html: 'This is the html body of the message.'
-      }
-  });
-
 if (process.env.REDISTOGO_URL) {
 	var rtg   = url.parse(process.env.REDISTOGO_URL);
 	var redis = redislib.createClient(rtg.port, rtg.hostname);
@@ -70,15 +60,22 @@ app.get('/add', function (req, response) {
     });
 });
 
-app.get('/go/:hex', function (req, response) {
+app.get('/:hex', function (req, response) {
    if (req.params.hex){
 	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
 					data = JSON.parse(res);
 					console.log(data.url);
 					response.redirect(data.url)
-					//response.write(res.url);
-					//response.end();
+					ses.send({
+						  from: 'kanter@mit.edu',
+						  to: [data.email],
+						  subject: "Relert for: " + data.name + " was looked at",
+						  body: {
+							  text: 'This is a relert for' + data.name,
+							  html: 'This is a relert for' + data.name +". It was looked at at" + (new Date()).getTime()
+						  }
+					  });
 				}
 		})
 	}
