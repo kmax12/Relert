@@ -83,10 +83,10 @@ app.get('/:hex', function (req, response) {
 });
 
 app.post('/done/:hex', function (req, response) {
-   console.log(req.body);
-   var data = JSON.parse(req.body);
    if (req.params.hex){
-		if (data.message!="false"){
+		console.log(req.body);
+		var data = JSON.parse(req.body);
+		if (data.message=="true"){
 			sendEmail(req.params.hex, data.messageBody);
 		}
 	}
