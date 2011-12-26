@@ -6,25 +6,9 @@ util = require('util'),
 path = require('path'),
 WEBROOT = path.join(path.dirname(__filename), '/webroot'),
 redislib = require('redis'),
-nodemailer = require('nodemailer');
-var Mu = require('mustache');
+nodemailer = require('nodemailer'),
+hogan = require('hogan.js');
 
-Mu.templateRoot = './static';
-
-var ctx = {
-  title:"http://aol.com"
-};
-
-Mu.render('frame.html', ctx, {}, function (err, output) {
-  if (err) {
-    throw err;
-  }
-
-  var buffer = '';
-
-  output.addListener('data', function (c) {buffer += c; })
-        .addListener('end', function () { console.log(buffer); });
-});
 
 nodemailer.SES = {
     AWSAccessKeyID: '', // required
@@ -87,10 +71,12 @@ app.get('/:hex', function (req, response) {
 	   redis.GET(req.params.hex, function(err, res){
 				if (res) {
 					data = JSON.parse(res);
+					template(WEBROOT+"/frame.html.mu", {title:data.url}, function(a){
+						setTimeout(1000*60*10, function(){sendEmail(req.params.hex)}); //try to send email in 10 minutes
+						response.write(a);
+						response.end();
+					});
 					
-					console.log(data.url);
-					response.redirect(data.url);
-					setTimeout(1000*60*10, function(){sendEmail(req.params.hex)}); //try to send email in 10 minutes
 				}
 		})
 	}
@@ -148,3 +134,10 @@ function decToBase64 (num){
 	return base64;
 }
 	
+function template (file, data, callback){
+	fs.readFile(file, function (err, res) {
+		var template = hogan.compile(res.toString());
+		var output = template.render(data);
+        callback(output);
+    });
+}
