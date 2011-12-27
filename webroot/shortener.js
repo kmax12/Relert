@@ -46,7 +46,7 @@ $(window).ready(function(){
 	});
 	
 	$('#submit').submit(function(e){
-			
+		alert('clicked');
 		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#email').val()+'&name='+$('#name').val(),function(data) {
 			var data = $.parseJSON(data)
 			if (!data.error){
