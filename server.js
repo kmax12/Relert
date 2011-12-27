@@ -81,7 +81,7 @@ app.get('/:hex', function (req, response) {
 						sendEmail(req.params.hex, "email read1");
 						setTimeout(function(){
 							sendEmail(req.params.hex, "email read2");
-						}, 1000); //try to send email in 10 minutes
+						}, 1000*60*10); //try to send email in 10 minutes
 						response.write(a);
 						response.end();
 					});
