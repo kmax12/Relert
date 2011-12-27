@@ -3,7 +3,13 @@ $(window).ready(function(){
 		rules: {
 			url: {
 				required: true,
-				url: true
+				url: function(a){
+						if (a.length>3){
+							return true;
+						} else {
+							return false;
+						}
+				}
 			},
 			name: {
 				required: true,
