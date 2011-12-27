@@ -15,6 +15,11 @@
 		margin: 0px;
 	}
 	
+	p{
+		margin:0;
+		padding:0;
+	}
+	
 	#logo{
 		position:relative;
 		top:-5px;
@@ -195,8 +200,21 @@
 		width:70%;
 		left:15%;
 		padding:30px 25px;
+		font-size:1.4em;
 	}
 	
+	#how-modal>p{
+		margin: 10px 0;
+		width:100%;
+	}
+	#how-modal>img{
+		width:100%;
+	}
+	
+	.bigger{
+			font-size:1.5em;
+	}
+
 	#how-modal-close{
 		float:right;
 		position:relative;
@@ -211,7 +229,6 @@
 		width:30%;
 		left:35%;
 		margin: 1em auto;
-		font-size: 1.7em;
 		font-weight: bold;
 		padding: .5em 1em;
 		background-color: #235;
@@ -233,25 +250,32 @@
 		visibility:none;
 		display: none;
 	}
+	
+	.highlight{
+		background-color:#454;
+		padding:2px;
+		border-radius:3px;
+	}
 </style>
 
 
 </head>
 <body>
 	<div id="relert-modal" class="hidden modal">
-		<div>Send this link your friend who's ignoring you.</div>
+		<div>Send this link a friend who is ignoring you.</div>
 		<input id="relert-link" onclick="this.select()" type="text" value=""/>
 		<div id="new" class="button">New relert</div>
 	</div>
-	<div id="how-modal" class="hidden modal">
+	<div id="how-modal" class=" modal">
 		<div id="how-modal-close" class="button">x</div>
-		Relert does two things really well: reply and alert
+		<p class="bigger"><span class="red">Re</span>lert does two things really well.</p>
+		<p><b class="highlight">Reply:</b> your friend has no excuse not to reply</p>
+		<img src="reply.png"/>
+		<p><b class="highlight">Alert:</b> get an email when your link is opened</p>
 
-		Your friend's have no excuse not to reply
-
-		You will be alerted when your link is read
+		
 	</div>
-	<div id="overlay" class="overlay hidden"></div>
+	<div id="overlay" class="overlay "></div>
 	<div id="logo"><span class="red">Re</span><span class="white">lert</span></div>
 	<div id="sub-container">
 		<div id="pro"><b>(ri-ˈlərt) n.</b></div> 
