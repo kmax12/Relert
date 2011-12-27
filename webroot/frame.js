@@ -3,6 +3,7 @@ $(window).ready(function(){
 	resize();
 	$(window).resize(resize);
 	$(window).unload(function() {
+		alert('asd');
 		if(!messageSent){
 			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: false} );	
 		}
@@ -17,7 +18,9 @@ $(window).ready(function(){
 	
 	
 	$('#close').click(function(){
-		
+		if(!messageSent){
+			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: false} );	
+		}
 	});
 	
 	$('#send').click(function(){
