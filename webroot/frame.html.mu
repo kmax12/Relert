@@ -72,6 +72,8 @@
 		border-radius: 3px;
 		cursor: pointer;
 		box-shadow: 0px 0px 2px #abb inset;
+		color:white:
+		border:1px;
 	}
 	
 	.button:hover{
