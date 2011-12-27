@@ -135,7 +135,7 @@ var sendEmail= function (hex, type, messageBody, callback){
 					}
 					
 					template(WEBROOT+"/"+type+".html.mu", partial, function (res){
-						console.log(res);					
+						console.log(data.email);					
 						ses.send({
 						  from: 'kanter@mit.edu',
 						  to: [data.email],
