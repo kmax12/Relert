@@ -29,12 +29,11 @@ $(window).ready(function(){
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 			var error = $(error).text();
-			console.log(element);
-			$('#'+$(element).attr('for')).next().addClass('hidden');
+			$(element).next().html(error).removeClass('hidden status-ok').addClass('status-error');
 		},
 		success: function(label) {
 			console.log('#'+$(label).attr('for'));
-			$('#'+$(label).attr('for')).next().removeClass('hidden');
+			$('#'+$(label).attr('for')).next().html("✓").removeClass('hidden status-error').addClass('status-ok');
 		}
 	});
 	$('#url').focus();
