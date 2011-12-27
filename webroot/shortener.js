@@ -45,19 +45,20 @@ $(window).ready(function(){
 	});
 	
 	$('#box').submit(function(e){
-		alert('clicked');
-		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#email').val()+'&name='+$('#name').val(),function(data) {
-			var data = $.parseJSON(data)
-			if (!data.error){
-				$('#overlay').removeClass('hidden');
-				$('#relert-modal').removeClass('hidden');
-				
-				$('#relert-link').val(data.url).focus().select();
-			} else {
-				alert(data.error)
-			}
-		});
 		
+		if ($('#box').valid()){
+			$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#email').val()+'&name='+$('#name').val(),function(data) {
+				var data = $.parseJSON(data)
+				if (!data.error){
+					$('#overlay').removeClass('hidden');
+					$('#relert-modal').removeClass('hidden');
+					
+					$('#relert-link').val(data.url).focus().select();
+				} else {
+					alert(data.error)
+				}
+			});
+		}
 		return false;
 	});
 	
