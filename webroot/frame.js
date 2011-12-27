@@ -4,7 +4,7 @@ $(window).ready(function(){
 	$(window).resize(resize);
 	
 	var src = $('#iframe').attr('src');
-	if (src.indexOf('youtube.com') != -1 && src.indexOf('youtube.com/embed' == -1)){
+	if (src.indexOf('youtube.com') != -1 && src.indexOf('youtube.com/embed') == -1){
 			src.replace('youtube.com', 'youtube.com/embed');
 			$('#iframe').attr('src', src);
 	}
