@@ -95,7 +95,7 @@
 			Send a comment about the link:
 		</div>
 		<input id="message" type="textarea" placeholder="This will be emailed to your friend"/>
-		<input type="sumbit" id="send" value="reply" class="button"/>
+		<input type="submit" id="send" value="reply" class="button"/>
 	</form>
 	<a id="close" class="button" href="{{url}}">x</a>
 </div>
