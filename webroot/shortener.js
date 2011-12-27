@@ -38,6 +38,12 @@ $(window).ready(function(){
 		}
 	});
 	$('#url').focus();
+	$('#url').blur(function(){
+		if ($('#url').val().indexOf('http://')!==0){
+			$('#url').val('http://'+$('#url').val())
+		}
+		
+	});
 	
 	$('#submit').click(function(e){
 		e.preventDefault();
