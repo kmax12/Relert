@@ -4,7 +4,7 @@ $(window).ready(function(){
 			url: {
 				required: true,
 				url: function(a){
-						if (a.length>3){
+						if (a.match(/(?:[a-zA-Z]|\d+)\.[a-zA-Z]+./)){
 							return true;
 						} else {
 							return false;
