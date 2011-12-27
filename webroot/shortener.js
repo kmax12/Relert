@@ -29,7 +29,7 @@ $(window).ready(function(){
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 			var error = $(error).text();
-			console.log('#'+$(element).attr('for'));
+			console.log(element);
 			$('#'+$(element).attr('for')).next().addClass('hidden');
 		},
 		success: function(label) {
