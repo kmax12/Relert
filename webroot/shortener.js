@@ -72,6 +72,12 @@ $(window).ready(function(){
 		$('#how-modal').removeClass('hidden');
 		return false;
 	});
+	
+	$('#how-modal-close').click(function(){
+		$('#overlay').addClass('hidden');
+		$('#how-modal').addClass('hidden');
+		return false;
+	});
 });
 
 
