@@ -3,7 +3,7 @@ $(window).ready(function(){
 		rules: {
 			url: {
 				required: true,
-				url: function(a){
+				niceUrl: function(a){
 						if (a.match(/(?:[a-zA-Z]|\d+)\.[a-zA-Z]+./)){
 							return true;
 						} else {
@@ -22,7 +22,7 @@ $(window).ready(function(){
 		messages: {
 			url: {
 				required: "Please enter a url",
-				url: "Invald url"
+				niceUrl: "Invald url"
 			},
 			name: {
 				required: "Please name this relert"
