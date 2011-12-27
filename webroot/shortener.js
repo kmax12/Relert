@@ -3,13 +3,7 @@ $(window).ready(function(){
 		rules: {
 			url: {
 				required: true,
-				niceUrl: function(a){
-						if (a.match(/(?:[a-zA-Z]|\d+)\.[a-zA-Z]+./)){
-							return true;
-						} else {
-							return false;
-						}
-				}
+				url: true
 			},
 			name: {
 				required: true,
@@ -22,7 +16,7 @@ $(window).ready(function(){
 		messages: {
 			url: {
 				required: "Please enter a url",
-				niceUrl: "Invald url"
+				url: "Invald url"
 			},
 			name: {
 				required: "Please name this relert"
@@ -43,6 +37,12 @@ $(window).ready(function(){
 		}
 	});
 	$('#url').focus();
+	$('#url').blur(function(){
+		if ($('#url').val().substring(0, 'http://'.length) !== 'http://'){
+			$('#url').val('http://'+$('#url').val())
+		}
+		$("#box").validate();
+	});
 	
 	$('#box').submit(function(e){
 		alert('clicked');
