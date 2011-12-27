@@ -45,9 +45,8 @@ $(window).ready(function(){
 		
 	});
 	
-	$('#submit').click(function(e){
-		e.preventDefault();
-		
+	$('#submit').submit(function(e){
+			
 		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#email').val()+'&name='+$('#name').val(),function(data) {
 			var data = $.parseJSON(data)
 			if (!data.error){
@@ -58,6 +57,8 @@ $(window).ready(function(){
 				alert(data.error)
 			}
 		});
+		
+		e.preventDefault();
 	});
 	
 	$('#new').click(function(){
