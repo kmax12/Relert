@@ -69,7 +69,7 @@ $(window).ready(function(){
 	
 	$('#how').click(function(){
 		$('#overlay').removeClass('hidden');
-		$('#relert-modal').removeClass('hidden');
+		$('#how-modal').removeClass('hidden');
 	});
 });
 
