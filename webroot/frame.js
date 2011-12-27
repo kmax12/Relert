@@ -25,7 +25,8 @@ $(window).ready(function(){
 				} else {
 					$('#change').html('Message not sent :(');
 				}
-					
+				
+				resize();
 			});	
 		}
 	});

@@ -46,8 +46,7 @@ app.get('/', function (req, response) {
 
 app.get('/add', function (req, response) {
 	redis.INCR('count', function(err, res){
-        var base64 = decToBase64(res),
-        data = {
+        var data = {
 				"url":req.query['url'],
 				"email": req.query['email'],
 				"name": req.query['name'],
@@ -55,15 +54,21 @@ app.get('/add', function (req, response) {
 				"wantsM": req.query['wants'],
 				"m": "notSent",
 				"messageBody": ""
-			};
+			},
+		base64 = gen64(6);
+		redis.exists(base64, function(err, res){
+			if (res == 0){
+				redis.SET(
+					base64,
+					JSON.stringify(data),
+					function(){
+						response.write('{"url": "http://relert.herokuapp.com/'+base64+'"}');
+						response.end();
+				});
+			}
+		})
 		
-		redis.SET(
-			base64,
-			JSON.stringify(data),
-			function(){
-				response.write('{"url": "http://relert.herokuapp.com/'+base64+'"}');
-				response.end();
-		});
+		
     });
 });
 
@@ -154,6 +159,16 @@ function decToBase64 (num){
 		start -= 1;
 	}
 	return base64;
+}
+
+function gen64 (size){
+	var base64Str = "abcdefghijklmnopqrstuvwyxzABCDEFGHIJKLMNOPQRSTUVWYXZ0123456789",
+	len = base64Str.length,
+	num = "";
+	for (var i=0; i<size; i++){
+		num+=base64Str.charAt(Math.floor(Math.random()*len));
+	}
+	return num;	
 }
 	
 function template (file, data, callback){
