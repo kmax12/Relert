@@ -87,13 +87,13 @@
 </head>
 <body>
 <div id="bar">
-	<div id="change">
+	<form id="change">
 		<div id="title">
 			Send a comment about the link:
 		</div>
 		<input id="message" type="textarea" placeholder="This will be emailed to your friend"/>
-		<div id="send" class="button">send</div>
-	</div>
+		<input type="sumbit" id="send" value="reply" class="button"/>
+	</form>
 	<a id="close" class="button" href="{{url}}">x</a>
 </div>
 <iframe src="{{url}}" width="100%" noresize="noresize" frameborder="0" id="iframe" style="height: 100%; "></iframe>

@@ -23,7 +23,7 @@ $(window).ready(function(){
 		}
 	});
 	
-	$('#send').click(function(){
+	$('#change').submit(function(){
 		var $message = $('#message'),
 		val = $message.val();
 		if (val === ""){
@@ -43,6 +43,7 @@ $(window).ready(function(){
 				resize();
 			});	
 		}
+		false;
 	});
 });
 
