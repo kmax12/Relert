@@ -7,7 +7,7 @@ $(window).ready(function(){
 	console.log(src.indexOf('youtube.com') != -1);
 	console.log(src.indexOf('youtube.com/embed') == -1);
 	if (src.indexOf('youtube.com') != -1 && src.indexOf('youtube.com/embed') == -1){
-			src.replace('youtube.com', 'youtube.com/embed');
+			src = src.replace('youtube.com', 'youtube.com/embed');
 			$('#iframe').attr('src', src);
 	}
 	
