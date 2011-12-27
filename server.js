@@ -79,7 +79,9 @@ app.get('/:hex', function (req, response) {
 					data = JSON.parse(res);
 					template(WEBROOT+"/frame.html.mu", {url:data.url, hex: req.params.hex}, function(a){
 						sendEmail(req.params.hex, "email read1");
-						setTimeout(1000, function(){sendEmail(req.params.hex, "email read2")}); //try to send email in 10 minutes
+						setTimeout(function(){
+							sendEmail(req.params.hex, "email read2");
+						}, 1000); //try to send email in 10 minutes
 						response.write(a);
 						response.end();
 					});
