@@ -56,6 +56,10 @@ app.get('/add', function (req, response) {
 				"messageBody": ""
 			},
 		base64 = gen64(6);
+		
+		if (data.url.substring(0, 'http://'.length) !== 'http://'){
+			data.url='http://'+data.url;
+		}
 		redis.exists(base64, function(err, res){
 			if (res == 0){
 				redis.SET(
