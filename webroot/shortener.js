@@ -16,14 +16,14 @@ $(window).ready(function(){
 		messages: {
 			url: {
 				required: "Please enter a url",
-				url: "Invald url"
+				url: "Invalid url"
 			},
 			name: {
 				required: "Please name this relert"
 			},
 			email: {
 				required: "Please enter an email address",
-				email: "Invaild email address"
+				email: "Invalid email address"
 			}
 		},
 		// the errorPlacement has to take the table layout into account
