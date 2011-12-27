@@ -141,10 +141,10 @@ var sendEmail= function (hex, type, messageBody, callback){
 						  to: [data.email],
 						  subject: "Relert for: " + data.name,
 						  body: {
-							  html: res
+							  html: "test"
 						  }
 						});
-						
+						console.log('sent');
 						if (callback) {callback(false);}
 					})
 				}
