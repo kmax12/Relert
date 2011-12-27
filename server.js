@@ -82,10 +82,9 @@ app.get('/:hex', function (req, response) {
 				if (res) {
 					data = JSON.parse(res);
 					template(WEBROOT+"/frame.html.mu", {url:data.url, hex: req.params.hex}, function(a){
-						sendEmail(req.params.hex, "email read1");
 						setTimeout(function(){
-							sendEmail(req.params.hex, "email read2");
-						}, 1000*60*10); //try to send email in 10 minutes
+							sendEmail(req.params.hex, "viewed");
+						}, 1000); //try to send email in 10 minutes
 						response.write(a);
 						response.end();
 					});
@@ -99,7 +98,7 @@ app.post('/done/:hex', function (req, response) {
 		console.log(req.body);
 		var data  = req.body;
 		if (data.message=="true"){
-			sendEmail(req.params.hex, data.messageBody, function(err){
+			sendEmail(req.params.hex, "message",data.messageBody, function(err){
 					if (err){
 							response.write('{"success": "false"}');
 					} else {
@@ -117,7 +116,7 @@ app.listen(port, function() {
   console.log("Listening on " + port);
 });
 
-var sendEmail= function (hex, messageBody, callback){
+var sendEmail= function (hex, type, messageBody, callback){
 	redis.GET(hex, function(err, res){
 			if (res) {
 				data = JSON.parse(res);
@@ -127,7 +126,15 @@ var sendEmail= function (hex, messageBody, callback){
 					data.messageBody = messageBody;
 					redis.set(hex, JSON.stringify(data));
 					
-					template(WEBROOT+"/message.html.mu", {name: data.name, message: messageBody, url:data.url}, function (res){					
+					var partial = {name: data.name, url:data.url}
+					
+					if (type == "message"){
+						partial.message =  messageBody;
+					} else if (type == "viewed"){
+						
+					}
+					
+					template(WEBROOT+"/"+type+".html.mu", partial, function (res){					
 						ses.send({
 						  from: 'kanter@mit.edu',
 						  to: [data.email],
