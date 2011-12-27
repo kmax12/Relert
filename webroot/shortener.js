@@ -70,6 +70,7 @@ $(window).ready(function(){
 	$('#how').click(function(){
 		$('#overlay').removeClass('hidden');
 		$('#how-modal').removeClass('hidden');
+		return false;
 	});
 });
 
