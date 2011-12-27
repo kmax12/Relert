@@ -42,8 +42,9 @@
 	}
 		
 	#send{
-		width:10%;
+		width: 5%;
 		padding: .2%;
+		color: white;
 	}
 	A:link {text-decoration: none; color: white}
 	A:visited {text-decoration: none; color: white}
