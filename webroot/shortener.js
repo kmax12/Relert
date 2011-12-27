@@ -41,7 +41,7 @@ $(window).ready(function(){
 		if ($('#url').val().substring(0, 'http://'.length) !== 'http://'){
 			$('#url').val('http://'+$('#url').val())
 		}
-		$("#box").validate();
+		$("#box").valid()
 	});
 	
 	$('#box').submit(function(e){
