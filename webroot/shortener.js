@@ -29,12 +29,10 @@ $(window).ready(function(){
 		// the errorPlacement has to take the table layout into account
 		errorPlacement: function(error, element) {
 			var error = $(error).text();
-			
+			$('#'+label.attr('for')).next().addClass('hidden');
 		},
 		success: function(label) {
-			console.log(label);
-			// set &nbsp; as text for IE
-			//label.html("&nbsp;").addClass("checked");
+			$('#'+label.attr('for')).next().removeClass('hidden');
 		}
 	});
 	$('#url').focus();
