@@ -127,7 +127,7 @@ var sendEmail= function (hex, messageBody, callback){
 					data.messageBody = messageBody;
 					redis.set(hex, JSON.stringify(data));
 					
-					template(WEBROOT+"/message.html.mu", {name: data.name, message: messageBody}, function (res){					
+					template(WEBROOT+"/message.html.mu", {name: data.name, message: messageBody, url:data.url}, function (res){					
 						ses.send({
 						  from: 'kanter@mit.edu',
 						  to: [data.email],
