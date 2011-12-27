@@ -113,13 +113,16 @@
 			background-color:ecc;
 	}
 	#url-status{
-			
+		top: 34px;
+		left: 320px;	
 	}
 	#name-status{
-			
+		top: 119px;
+		left: 320px;
 	}
 	#email-status{
-			
+		top: 201px;
+		left: 320px;
 	}
 	.status{
 		display: inline;
@@ -134,6 +137,7 @@
 	}
 	
 	.status-error {
+		font-size:1em;
 		background-color:#832;
 		color:#fff;
 	}
@@ -247,11 +251,11 @@
 	<div id ="container">
 		<form id="box">
 			<div class="label">The link</div>
-			<input id="url" name="url" type="text" placeholder="http://google.com/"/> <div id="url-status"class="status status-error">adasdad</div>
+			<input id="url" name="url" type="text" placeholder="http://google.com/"/> <div id="url-status"class="status hidden"></div>
 			<div class="label">Name</div>
-			<input id="name"  name='name' type="text" placeholder="Funny cat video for Dad"/> <div id="name-status" class=" status status-error ">asdasd</div>
+			<input id="name"  name='name' type="text" placeholder="Funny cat video for Dad"/> <div id="name-status" class=" status hidden"></div>
 			<div class="label">Email to receive relert</div>
-			<input id="email" name="email" type="text" placeholder="beboop@wezoodle.com"/> <div id="email-status" class="status status-error">asdasd</div>
+			<input id="email" name="email" type="text" placeholder="beboop@wezoodle.com"/> <div id="email-status" class="status hidden"></div>
 			<input id="submit" class="button" type="submit" value="Submit"/>
 		</form>
 		
