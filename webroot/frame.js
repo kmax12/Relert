@@ -2,7 +2,11 @@ var messageSent = false;
 $(window).ready(function(){
 	resize();
 	$(window).resize(resize);
-	
+	$(window).unload(function() {
+		if(!messageSent){
+			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: false} );	
+		}
+	});
 	var src = $('#iframe').attr('src');
 	console.log(src.indexOf('youtube.com') != -1);
 	console.log(src.indexOf('youtube.com/embed') == -1);
@@ -13,9 +17,7 @@ $(window).ready(function(){
 	
 	
 	$('#close').click(function(){
-		if(!messageSent){
-			$.post("http://relert.herokuapp.com/done/"+window.hex, {message: false} );	
-		}
+		
 	});
 	
 	$('#send').click(function(){
