@@ -39,7 +39,7 @@ $(window).ready(function(){
 	});
 	$('#url').focus();
 	$('#url').blur(function(){
-		if ($('#url').val().indexOf('http://')!==0){
+		if ($('#url').val().substring(0, 'http://'.length) === 'http://'){
 			$('#url').val('http://'+$('#url').val())
 		}
 		
