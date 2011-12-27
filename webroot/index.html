@@ -5,8 +5,8 @@
 	body{
 		font-family: sans-serif;
 		background-color: #777;
-		color: white;
-		text-shadow: 0 2px 2px #222;
+		color: #fefefe;
+		text-shadow: 0 1px 1px #222;
 		margin: 0px;
 	}
 	
@@ -38,14 +38,39 @@
 		color:#454;
 	}
 	
+	#sub-container{
+			width:950px;
+			margin:auto;
+			padding:.1em;
+			margin:.1em auto!important;
+			color:#ffff;
+			font: 2.5em/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	
+	#pro{
+			text-align: left;
+			margin: 0px 0px 10px 0px;
+	}
+	
 	#sub{
-		width:auto;
-		padding:.1em;
-		margin:.1em auto!important;
 		text-align:center;
-		color:#ffff;
-		border-radius: 5px;
-		font: 2.5em/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:.8em;
+	}
+	
+	#how:link{
+		color: #832;
+	}
+	
+	#how:visited{
+		color: #832;
+	}
+	
+	#how:active{
+		color:#832;
+	}
+	
+	#how:hover{
+		color:#235;
 	}
 	
 	#container{
@@ -92,10 +117,10 @@
 	}
 	
 	#submit {
-		
 	}
 	
 	.button{
+		color:#ddd;
 		width:auto;
 		margin: .4em 0 0 0;
 		font-size: 1em;
@@ -125,7 +150,7 @@
 		z-index:9999;
 	}
 	
-	#modal{
+	.modal{
 		position: absolute;
 		left:35%;
 		top:30%;
@@ -159,15 +184,23 @@
 
 </head>
 <body>
-	<div id="modal" class="hidden popbox">
+	<div id="relert-modal" class="hidden modal">
 		<div>We'll email you when your friend looks at this link.</div>
 		<input id="relert-link" onclick="this.select()" type="text" value=""/>
 		<div id="new" class="button">New relert</div>
 	</div>
-	<div id="overlay" class="overlay hidden popbox"></div>
+	<div id="how-modal" class="hidden modal">
+		Relert does two things really well: reply and alert
+
+		Your friend's have no excuse not to reply
+
+		You will be alerted when your link is read
+	</div>
+	<div id="overlay" class="overlay hidden"></div>
 	<div id="logo"><span class="red">Re</span><span class="white">lert</span></div>
-	<div id="sub">
-		<b class="">\ri-ˈlərt\ n. <br></b> A link that makes it hard for your friends to ignore you</b>
+	<div id="sub-container">
+		<div id="pro"><b>(ri-ˈlərt) n.</b></div> 
+		<div id="sub">A link that makes it hard for your friends to ignore you. <a id="how" href="">How?</a></div>
 	</div>
 	<div id ="container">
 		<form id="box">

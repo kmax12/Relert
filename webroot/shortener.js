@@ -50,7 +50,8 @@ $(window).ready(function(){
 		$.get('http://relert.herokuapp.com/add?url='+$('#url').val()+'&email='+$('#email').val()+'&name='+$('#name').val(),function(data) {
 			var data = $.parseJSON(data)
 			if (!data.error){
-				$('.popbox').removeClass('hidden');
+				$('#overlay').removeClass('hidden');
+				$('#relert-modal').removeClass('hidden');
 				
 				$('#relert-link').val(data.url).focus().select();
 			} else {
@@ -62,7 +63,13 @@ $(window).ready(function(){
 	});
 	
 	$('#new').click(function(){
-		$('.popbox').addClass('hidden');
+		$('#overlay').addClass('hidden');
+		$('#relert-modal').addClass('hidden');
+	});
+	
+	$('#how').click(function(){
+		$('#overlay').removeClass('hidden');
+		$('#relert-modal').removeClass('hidden');
 	});
 });
 
